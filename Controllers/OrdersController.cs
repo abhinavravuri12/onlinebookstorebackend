@@ -27,14 +27,14 @@ namespace MyBookShopAPI.Controllers
             return int.Parse(userIdClaim.Value);
         }
 
-        // ✅ Checkout Endpoint
+        
         [HttpPost("checkout")]
         [Authorize]
         public async Task<IActionResult> Checkout([FromBody] CheckoutDto dto)
         {
             var userId = GetUserIdFromClaims();
 
-            // Get user's cart items (not ordered yet)
+            
             var cartItems = await _context.CartItems
                 .Include(ci => ci.Book)
                 .Where(ci => ci.UserId == userId && ci.OrderId == null)
@@ -43,7 +43,7 @@ namespace MyBookShopAPI.Controllers
             if (!cartItems.Any())
                 return BadRequest(new { message = "Cart is empty." });
 
-            // Check stock
+          
             foreach (var ci in cartItems)
             {
                 if (ci.Book.StockQuantity < ci.Quantity)
@@ -53,7 +53,6 @@ namespace MyBookShopAPI.Controllers
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                // ✅ Create Order
                 var order = new Order
                 {
                     UserId = userId,
@@ -68,7 +67,6 @@ namespace MyBookShopAPI.Controllers
 
                 decimal total = 0m;
 
-                // ✅ Create OrderItems & update stock
                 foreach (var ci in cartItems)
                 {
                     var book = await _context.Books.FindAsync(ci.BookId);
@@ -79,20 +77,20 @@ namespace MyBookShopAPI.Controllers
                     {
                         OrderId = order.Id,
                         BookId = book.Id,
-                        BookTitle = book.Title, // ✅ Added BookTitle
+                        BookTitle = book.Title, 
                         Quantity = ci.Quantity,
                         Price = book.Price
                     };
 
                     _context.OrderItems.Add(orderItem);
 
-                    // Update stock
+                   
                     book.StockQuantity -= ci.Quantity;
                     _context.Books.Update(book);
 
                     total += ci.Quantity * book.Price;
 
-                    // Link CartItem to order
+                   
                     ci.OrderId = order.Id;
                     _context.CartItems.Update(ci);
                 }
@@ -100,7 +98,7 @@ namespace MyBookShopAPI.Controllers
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
 
-                // ✅ Build Response
+
                 var orderItems = await _context.OrderItems
                     .Include(oi => oi.Book)
                     .Where(oi => oi.OrderId == order.Id)
@@ -117,7 +115,7 @@ namespace MyBookShopAPI.Controllers
                         BookId = oi.BookId,
                         Quantity = oi.Quantity,
                         Price = oi.Price,
-                        Title = oi.BookTitle // ✅ Use stored BookTitle
+                        Title = oi.BookTitle 
                     }).ToList()
                 };
 
@@ -134,7 +132,7 @@ namespace MyBookShopAPI.Controllers
             }
         }
 
-        // ✅ Get logged-in user’s orders
+       
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> GetUserOrders()
@@ -166,7 +164,6 @@ namespace MyBookShopAPI.Controllers
             return Ok(orderDtos);
         }
 
-        // ✅ Get a specific order by ID (user or admin)
         [HttpGet("{id}")]
         [Authorize]
         public async Task<IActionResult> GetOrderById(int id)
@@ -203,7 +200,7 @@ namespace MyBookShopAPI.Controllers
             return Ok(orderDto);
         }
 
-        // ✅ Admin: Get all orders
+        
         [HttpGet("admin/all")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllOrders()
@@ -234,7 +231,7 @@ namespace MyBookShopAPI.Controllers
             return Ok(orderDtos);
         }
 
-        // ✅ Admin: Update order status
+       
         [HttpPut("admin/update-status/{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateOrderStatus(int id, [FromBody] string status)

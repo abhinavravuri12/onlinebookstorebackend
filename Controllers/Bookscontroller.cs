@@ -50,6 +50,46 @@ namespace MyBookShopAPI.Controllers
 
             return Ok(results);
         }
+        [HttpGet("genre/{genre}")]
+
+        public async Task<IActionResult> GetBooksByGenre(string genre)
+
+        {
+
+            if (string.IsNullOrWhiteSpace(genre))
+
+                return BadRequest(new { message = "Genre cannot be empty." });
+
+            var results = await _context.Books
+
+                .Where(b => b.Genre.Contains(genre))
+
+                .ToListAsync();
+
+            return Ok(results);
+
+        }
+
+        [HttpGet("author/{author}")]
+
+        public async Task<IActionResult> GetBooksByAuthor(string author)
+
+        {
+
+            if (string.IsNullOrWhiteSpace(author))
+
+                return BadRequest(new { message = "Author cannot be empty." });
+
+            var results = await _context.Books
+
+                .Where(b => b.Author.Contains(author))
+
+                .ToListAsync();
+
+            return Ok(results);
+
+        }
+
 
         [HttpPost]
         [Authorize(Roles = "Admin")]

@@ -69,7 +69,6 @@ namespace MyBookShopAPI.Controllers
             if (book.StockQuantity < dto.Quantity)
                 return BadRequest(new { message = "Not enough stock." });
 
-            // If existing cart item for same book (not checked out), update it
             var existing = await _context.CartItems
                 .FirstOrDefaultAsync(ci => ci.UserId == userId && ci.BookId == dto.BookId && ci.OrderId == null);
 

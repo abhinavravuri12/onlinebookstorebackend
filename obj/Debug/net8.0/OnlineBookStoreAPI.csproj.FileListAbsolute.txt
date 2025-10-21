@@ -168,3 +168,4 @@ C:\Users\YB565JR\Source\repos\BookManagementAPI\BookManagementAPI\obj\Debug\net8
 C:\Users\YB565JR\Source\repos\BookManagementAPI\BookManagementAPI\obj\Debug\net8.0\OnlineBookStoreAPI.pdb
 C:\Users\YB565JR\Source\repos\BookManagementAPI\BookManagementAPI\obj\Debug\net8.0\OnlineBookStoreAPI.genruntimeconfig.cache
 C:\Users\YB565JR\Source\repos\BookManagementAPI\BookManagementAPI\obj\Debug\net8.0\ref\OnlineBookStoreAPI.dll
+C:\Users\YB565JR\Source\repos\BookManagementAPI\BookManagementAPI\obj\Debug\net8.0\OnlineBookStoreAPI.sourcelink.json

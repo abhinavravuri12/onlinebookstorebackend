@@ -29,7 +29,7 @@ namespace MyBookShopAPI.Models
 
         public int StockQuantity { get; set; }
 
-        // ✅ Navigation properties
+     
         public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }

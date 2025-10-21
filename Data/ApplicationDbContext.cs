@@ -8,6 +8,8 @@ namespace MyBookShopAPI.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        internal object CustomerQuerie;
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         { }
@@ -17,6 +19,9 @@ namespace MyBookShopAPI.Data
         public DbSet<Order> Orders { get; set; } = null!;
         public DbSet<CartItem> CartItems { get; set; } = null!;
         public DbSet<OrderItem> OrderItems { get; set; } = null!;
+        //public DbSet<Customer> Customers { get; set; } = null!;
+
+        public DbSet<CustomerQuery> CustomerQueries { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

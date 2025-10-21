@@ -1,5 +1,87 @@
 [
   {
+    "ContainingType": "OnlineBookStoreAPI.Controllers.AdminController",
+    "Method": "GetAllCustomers",
+    "RelativePath": "api/Admin/customers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBookStoreAPI.Controllers.AdminController",
+    "Method": "UpdateCustomer",
+    "RelativePath": "api/Admin/customers/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "OnlineBookStoreAPI.Controllers.CustomerUpdateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBookStoreAPI.Controllers.AdminController",
+    "Method": "GetTotalOrderCount",
+    "RelativePath": "api/Admin/customers/ordercount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBookStoreAPI.Controllers.AdminController",
+    "Method": "GetOrderSummary",
+    "RelativePath": "api/Admin/orders/summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBookStoreAPI.Controllers.AdminController",
+    "Method": "GetAllQueries",
+    "RelativePath": "api/Admin/queries",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBookStoreAPI.Controllers.AdminController",
+    "Method": "ReplyToQuery",
+    "RelativePath": "api/Admin/queries/reply/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "reply",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MyBookShopAPI.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
@@ -17,6 +99,16 @@
   },
   {
     "ContainingType": "MyBookShopAPI.Controllers.AuthController",
+    "Method": "GetPublicKey",
+    "RelativePath": "api/Auth/public-key",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyBookShopAPI.Controllers.AuthController",
     "Method": "Register",
     "RelativePath": "api/Auth/register",
     "HttpMethod": "POST",
@@ -29,16 +121,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MyBookShopAPI.Controllers.AuthController",
-    "Method": "SecureData",
-    "RelativePath": "api/Auth/secure-data",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -115,6 +197,38 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyBookShopAPI.Controllers.BooksController",
+    "Method": "GetBooksByAuthor",
+    "RelativePath": "api/Books/author/{author}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "author",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyBookShopAPI.Controllers.BooksController",
+    "Method": "GetBooksByGenre",
+    "RelativePath": "api/Books/genre/{genre}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "genre",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -223,6 +337,32 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyBookShopAPI.Controllers.CustomerQueryController",
+    "Method": "CreateQuery",
+    "RelativePath": "api/CustomerQuery/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "MyBookShopAPI.Models.CustomerQuery",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyBookShopAPI.Controllers.CustomerQueryController",
+    "Method": "GetUserQueries",
+    "RelativePath": "api/CustomerQuery/my-queries",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

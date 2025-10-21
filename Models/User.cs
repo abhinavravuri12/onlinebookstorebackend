@@ -6,6 +6,8 @@ namespace MyBookShopAPI.Models
     [Table("Users")]
     public class User
     {
+        internal object Status;
+
         [Key]
         public int Id { get; set; }
 

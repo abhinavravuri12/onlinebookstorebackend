@@ -12,8 +12,8 @@ using MyBookShopAPI.Data;
 namespace OnlineBookStoreAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251007063118_AddShippingAndPaymentToOrders")]
-    partial class AddShippingAndPaymentToOrders
+    [Migration("20251019133629_InitialCreate2")]
+    partial class InitialCreate2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
